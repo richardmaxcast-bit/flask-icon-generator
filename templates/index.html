@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Ícones</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        h1 { text-align: center; color: #333; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        label { font-weight: bold; }
+        input[type="text"] { padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+        input[type="submit"] { padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.3s; }
+        input[type="submit"]:hover { background-color: #0056b3; }
+        .error { color: red; font-weight: bold; text-align: center; margin-bottom: 15px; padding: 10px; border: 1px solid red; background-color: #ffeaea; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Gerador de Ícones Automático</h1>
+    
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('index') }}">
+        <label for="numberID">Digite o Número ID da API (Ex: 12345):</label>
+        <input type="text" id="numberID" name="numberID" required>
+        <input type="submit" value="Gerar Ícones">
+    </form>
+    
+    <p style="margin-top: 20px; text-align: center; font-size: 0.9em;">A imagem original será baixada, pré-processada e redimensionada.</p>
+</body>
+</html>

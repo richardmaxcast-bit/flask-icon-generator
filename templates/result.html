@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado da Geração</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+        h1 { text-align: center; color: #28a745; }
+        ul { list-style: none; padding: 0; }
+        li { margin-bottom: 10px; padding: 10px; border: 1px solid #eee; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
+        a { color: #007bff; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+        .back-link { display: block; margin-top: 30px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>✅ Sucesso! Ícones Gerados</h1>
+    <p>O processamento para o ID **{{ numberID }}** foi concluído. Baixe seus ícones:</p>
+    
+    <ul>
+        {% for file in files_data %}
+            <li>
+                <span>{{ file.name }}</span>
+                <a href="{{ file.url }}" download="{{ file.name }}">Baixar</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="back-link">
+        <a href="{{ url_for('index') }}">← Gerar Outros Ícones</a>
+    </div>
+</body>
+</html>

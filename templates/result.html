@@ -1,33 +1,182 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Resultado da Geração</title>
-    <style>
-        body { font-family: sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-        h1 { text-align: center; color: #28a745; }
-        ul { list-style: none; padding: 0; }
-        li { margin-bottom: 10px; padding: 10px; border: 1px solid #eee; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; }
-        a { color: #007bff; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
-        .back-link { display: block; margin-top: 30px; text-align: center; }
-    </style>
+  <meta charset="UTF-8">
+  <title>Resultado da Geração</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #101828, #0a0f1f 80%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #e2e8f0;
+      overflow: hidden;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(50px);
+      opacity: 0.4;
+      animation: move 10s infinite alternate ease-in-out;
+    }
+
+    .circle:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      background: #22c55e;
+      top: -60px;
+      left: -50px;
+    }
+
+    .circle:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      background: #3b82f6;
+      bottom: -80px;
+      right: -80px;
+    }
+
+    @keyframes move {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-20px) translateX(10px); }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 40px 45px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.6s ease;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      background: linear-gradient(90deg, #22c55e, #4ade80, #86efac);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #a5b4fc;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px 15px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    li:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #93c5fd;
+      text-shadow: 0 0 6px #60a5fa;
+    }
+
+    .back-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .back-link a {
+      color: #22c55e;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .back-link a:hover {
+      color: #86efac;
+      text-shadow: 0 0 6px #22c55e;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 30px;
+      color: #64748b;
+      opacity: 0.7;
+    }
+
+    footer span {
+      color: #60a5fa;
+      font-weight: 600;
+      text-shadow: 0 0 6px rgba(96, 165, 250, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
+
 <body>
+  <div class="circle"></div>
+  <div class="circle"></div>
+
+  <div class="container">
     <h1>✅ Sucesso! Ícones Gerados</h1>
-    <p>O processamento para o ID **{{ numberID }}** foi concluído. Baixe seus ícones:</p>
-    
+    <p>O processamento para o ID <strong>{{ numberID }}</strong> foi concluído. Baixe seus ícones abaixo:</p>
+
     <ul>
-        {% for file in files_data %}
-            <li>
-                <span>{{ file.name }}</span>
-                <a href="{{ file.url }}" download="{{ file.name }}">Baixar</a>
-            </li>
-        {% endfor %}
+      {% for file in files_data %}
+        <li>
+          <span>{{ file.name }}</span>
+          <a href="{{ file.url }}" download="{{ file.name }}">Baixar</a>
+        </li>
+      {% endfor %}
     </ul>
 
     <div class="back-link">
-        <a href="{{ url_for('index') }}">← Gerar Outros Ícones</a>
+      <a href="{{ url_for('index') }}">← Gerar Outros Ícones</a>
     </div>
+
+    <footer>
+      Criado com 👑 por <span>Richard o REI</span>
+    </footer>
+  </div>
 </body>
 </html>

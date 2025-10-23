@@ -4,7 +4,7 @@ import os
 import sys
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 
-# --- CONFIGURAÇÃO DO FLASK ---
+# --- CONFIGURAÇÃO DO FLASKÃO ---
 app = Flask(__name__)
 
 # Define o diretório onde os ícones finais serão salvos
@@ -167,3 +167,5 @@ if __name__ == '__main__':
     # Este é o ponto de entrada que inicia o servidor web Flask
     # 'debug=True' recarrega o servidor automaticamente quando o código muda
     app.run(debug=True)
+
+    #CODIGÃO COM GOK, COMENTARIO FEITO POR ELE MESMO ABRAÇOS RICHARD MAX

@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Gerador de Ícones</title>
+    <title>MAX 3.0</title>
     <style>
         /* ===== RESET ===== */
         * {
@@ -181,7 +181,7 @@
     <div class="circle"></div>
 
     <div class="container">
-        <h1>🚀 Gerador de Ícones</h1>
+        <h1>🚀 MAX 3.0</h1>
 
         {% if error %}
             <div class="error">{{ error }}</div>
@@ -190,13 +190,13 @@
         <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
             
             <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: -5px;">
-                Selecione uma opção para gerar os ícones:
+                Selecione uma opção para redimensionar a imagem:
             </p>
 
             <label for="numberID">Número ID:</label>
             <input type="text" id="numberID" name="numberID" placeholder="Ex: 12345 (Ou use a opção B)" >
             
-            <p class="separator">Max 3.0 by>Richard o REI</p>
+            <p class="separator">OU</p>
 
             <label for="image_file">Fazer Upload de Imagem:</label>
             <input type="file" id="image_file" name="image_file" accept="image/png, image/jpeg">
@@ -205,7 +205,7 @@
         </form>
 
         <p class="note">
-            O sistema fará o download/upload, tratamento de contraste e redimensionamento da imagem automaticamente.
+            🚀 Max 3.0 
         </p>
     </div>
 </body>

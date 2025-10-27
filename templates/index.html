@@ -1,184 +1,212 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Gerador de Ícones</title>
-  <style>
-    /* ===== RESET ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
+    <meta charset="UTF-8">
+    <title>Gerador de Ícones</title>
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
 
-    /* ===== BODY ===== */
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at top, #101828, #0a0f1f 80%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #e2e8f0;
-      overflow: hidden;
-    }
+        /* ===== BODY ===== */
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at top, #101828, #0a0f1f 80%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #e2e8f0;
+            overflow: hidden;
+        }
 
-    /* ===== GLASS CARD ===== */
-    .container {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 40px 45px;
-      width: 100%;
-      max-width: 420px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-      animation: fadeIn 0.6s ease;
-    }
+        /* ===== GLASS CARD ===== */
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px 45px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.6s ease;
+        }
 
-    h1 {
-      text-align: center;
-      font-size: 1.9rem;
-      background: linear-gradient(90deg, #60a5fa, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      margin-bottom: 25px;
-    }
+        h1 {
+            text-align: center;
+            font-size: 1.9rem;
+            background: linear-gradient(90deg, #60a5fa, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
 
-    /* ===== FORM ===== */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
+        /* ===== FORM ===== */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
 
-    label {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #a5b4fc;
-    }
+        label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #a5b4fc;
+        }
+        
+        /* Estilo base para inputs de texto e upload */
+        input[type="text"], input[type="file"] {
+            padding: 12px 14px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
 
-    input[type="text"] {
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      color: #e2e8f0;
-      font-size: 1rem;
-      outline: none;
-      transition: all 0.3s;
-    }
+        input[type="text"]:focus {
+            border-color: #60a5fa;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
+        }
 
-    input[type="text"]:focus {
-      border-color: #60a5fa;
-      box-shadow: 0 0 10px rgba(96, 165, 250, 0.3);
-    }
+        /* Ajuste específico para input file */
+        input[type="file"] {
+             /* Remove o padding extra para que o botão interno do SO caiba melhor */
+            padding: 8px 14px; 
+            /* Se for necessário customizar, o CSS é complexo para 'file' */
+        }
 
-    input[type="submit"] {
-      background: linear-gradient(90deg, #3b82f6, #6366f1);
-      color: #fff;
-      border: none;
-      padding: 12px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-      transition: all 0.3s;
-    }
+        input[type="submit"] {
+            background: linear-gradient(90deg, #3b82f6, #6366f1);
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
 
-    input[type="submit"]:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    }
+        input[type="submit"]:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
 
-    /* ===== ERRO ===== */
-    .error {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
-      border-radius: 10px;
-      padding: 12px;
-      text-align: center;
-      font-weight: 600;
-      margin-bottom: 20px;
-      animation: shake 0.3s ease;
-    }
+        /* Estilo para o separador OU */
+        .separator {
+            text-align: center;
+            color: #a5b4fc;
+            font-weight: 600;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
 
-    /* ===== TEXTO FINAL ===== */
-    .note {
-      margin-top: 25px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #94a3b8;
-      line-height: 1.5;
-    }
 
-    /* ===== ANIMAÇÕES ===== */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        /* ===== ERRO ===== */
+        .error {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: shake 0.3s ease;
+        }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
-    }
+        /* ===== TEXTO FINAL ===== */
+        .note {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
 
-    /* ===== PARTICLE EFFECT (DECORAÇÃO) ===== */
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(50px);
-      opacity: 0.4;
-      animation: move 10s infinite alternate ease-in-out;
-    }
+        /* ===== ANIMAÇÕES e PARTICLE EFFECT (mantidos) ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-    .circle:nth-child(1) {
-      width: 200px;
-      height: 200px;
-      background: #6366f1;
-      top: -50px;
-      left: -50px;
-    }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
 
-    .circle:nth-child(2) {
-      width: 300px;
-      height: 300px;
-      background: #3b82f6;
-      bottom: -80px;
-      right: -80px;
-    }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.4;
+            animation: move 10s infinite alternate ease-in-out;
+        }
 
-    @keyframes move {
-      0% { transform: translateY(0px); }
-      100% { transform: translateY(-20px) translateX(10px); }
-    }
-  </style>
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            background: #6366f1;
+            top: -50px;
+            left: -50px;
+        }
+
+        .circle:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            background: #3b82f6;
+            bottom: -80px;
+            right: -80px;
+        }
+
+        @keyframes move {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-20px) translateX(10px); }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="circle"></div>
-  <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
 
-  <div class="container">
-    <h1>🚀 Gerador de Ícones</h1>
+    <div class="container">
+        <h1>🚀 Gerador de Ícones</h1>
 
-    {% if error %}
-      <div class="error">{{ error }}</div>
-    {% endif %}
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
 
-    <form method="POST" action="{{ url_for('index') }}">
-      <label for="numberID">Número ID da API:</label>
-      <input type="text" id="numberID" name="numberID" placeholder="Ex: 12345" required>
-      <input type="submit" value="Gerar Ícones">
-    </form>
+        <form method="POST" action="{{ url_for('index') }}" enctype="multipart/form-data">
+            
+            <p style="text-align: center; font-size: 0.85rem; color: #94a3b8; margin-bottom: -5px;">
+                Selecione uma opção para gerar os ícones:
+            </p>
 
-    <p class="note">
-      O sistema fará o download, tratamento e redimensionamento da imagem automaticamente.
-    </p>
-  </div>
+            <label for="numberID">Opção A: Número ID da API:</label>
+            <input type="text" id="numberID" name="numberID" placeholder="Ex: 12345 (Ou use a opção B)" >
+            
+            <p class="separator">OU</p>
+
+            <label for="image_file">Opção B: Fazer Upload de Imagem (PNG/JPG):</label>
+            <input type="file" id="image_file" name="image_file" accept="image/png, image/jpeg">
+
+            <input type="submit" value="Gerar Ícones">
+        </form>
+
+        <p class="note">
+            O sistema fará o download/upload, tratamento de contraste e redimensionamento da imagem automaticamente.
+        </p>
+    </div>
 </body>
 </html>
